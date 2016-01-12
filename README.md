@@ -13,4 +13,6 @@ Clone this repo and execute in your favourite shell:
 
 After completing installation type in your favourite shell:
 
-* `gulp play` to start the "Rose Garden Planner app in a new browser window. App files are observed and will be re-transpiled on each change.
+* `gulp play` to start the "Rose Garden Planner" app in a new browser window. App files are observed and will be re-transpiled on each change.
+* 
+Base template and build script from https://github.com/pkozlowski-opensource/ng2-play
