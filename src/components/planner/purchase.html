@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row">
+        <div class="col s10 m12">
+            <h2 class="header">Purchase</h2>
+            <div></div>
+           <div class="card-panel blue-grey-text white z-depth-5">
+                 <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card ">
+                            <div class="card-content ">
+                                <span class="card-title red-text">Your Order</span>
+                                <div>Number of roses: {{model.totalQuantity}}</div>
+                                <div>Total Cost: {{model.amount | currency: 'USD': true: '.2-2'}}</div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col s12 m12">
+                        <div class="card ">
+                            <div class="card-content ">
+                                <span class="card-title red-text">Checkout</span>
+                                <div class="row">
+                                    <form #f="ngForm" class="col s12" (ngSubmit)="onSubmit(f.value)" >
+                                        <div class="row">
+                                            <div class="input-field col s3">
+                                                <input type="text" id="firstName" ngControl="firstName" [(ngModel)]="model.firstName" required class="validate">
+                                                <show-error control="firstName" [display]="['First Name']" [errors]="['required']"></show-error>
+                                                <label class="active" for="firstName">First Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s3">
+                                                <input type="text" id="lastName" ngControl="lastName" [(ngModel)]="model.lastName" required class="validate">
+                                                <show-error control="lastName" [display]="['Last Name']" [errors]="['required']"></show-error>
+                                                <label class="active" for="lastName">Last Name</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s2">
+                                                <label class="active" for="country">Country</label>
+                                                <select class="browser-default" id="country" ngControl="country" [(ngModel)]="model.country" >
+                                                    <option *ngFor="#c of countries" [value]="c">{{c}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <label class="active" for="creditCard">Credit Card</label>
+                                                <input type="text" id="creditCard" ngControl="creditCard" [(ngModel)]="model.creditCard" required class="validate">
+                                                <show-error control="creditCard" [display]="['Credit Card']" [errors]="['required', 'invalidCreditCard']"></show-error>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <label class="active" for="email" data-error="wrong" data-success="right">Email</label>
+                                                <input type="email" id="email" ngControl="email" [(ngModel)]="model.email" required class="validate" type="email">
+                                                <show-error control="email" [display]="['Email']" [errors]="['required']"></show-error>
+                                            </div>
+                                        </div>
+                                        <div class="row valign-wrapper">
+                                            <div class="valign right-align col s10"><h5 *ngIf="showThanks" class="header col s12 light">Thanks {{model.firstName }} for your order!</h5></div>
+                                            <div class="valign right-align col s2">
+                                                <button type="submit" [disabled]="!f.valid" class="waves-effect waves-light btn" (click)="showThanks=!showThanks">Submit Order<i class="material-icons right">send</i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

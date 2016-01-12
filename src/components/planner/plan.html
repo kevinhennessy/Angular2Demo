@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col s10 m12">
+            <h2 class="header">Plan Garden</h2>
+            <div class="card-panel blue-grey-text white z-depth-5">
+                 <div class="row valign-wrapper">
+                    <div class="row col s10">Enter the dimensions of your garden (in 4 foot increments):</div>
+                </div>
+                <div class="row valign-wrapper">
+                    <div class="valign right-align col s3"> Width:</div>
+                    <div class="valign left-align col s7">
+                         <select class="browser-default" (change)="setWidth($event.target.value)">
+                           <option value="" disabled selected>Choose width</option>
+                          <option *ngFor="#item of dimensions" [value]="item">{{item}}</option>
+                         </select>
+                    </div>
+                </div>
+                <div class="row valign-wrapper">
+                    <div class="valign right-align col s3">Length:</div>
+                    <div class="valign left-align col s7">
+                        <select class="browser-default" (change)="setLength($event.target.value)">
+                           <option value="" disabled selected>Choose Length</option>
+                          <option *ngFor="#item of dimensions" [value]="item">{{item}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row valign-wrapper">
+                    <div class="valign right-align col s3">Total Square Footage:</div>
+                    <div class="valign left-align col s7" *ngIf="squareFootage" >{{ squareFootage }}</div>
+                </div>
+                <div class="row valign-wrapper">
+                    <div class="valign right-align col s3">Maximum Number of Roses:</div>
+                    <div class="valign left-align col s7" *ngIf="maxRoses">{{ maxRoses }}</div>
+                </div>
+                <div class="row valign-wrapper">
+                    <div class="valign right-align col s12">
+                        <a [routerLink]="['/Pick']" class="waves-effect waves-light btn">Select Roses
+                        <i class="material-icons right">send</i>
+                        </a>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+</div>

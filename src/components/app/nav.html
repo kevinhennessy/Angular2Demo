@@ -1,0 +1,18 @@
+<nav class="materialize-red lighten-2" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" [routerLink]="['Welcome']" class="brand-logo materialize-red lighten-2">Rose Garden Planner</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a [routerLink]="['/Plan']">Plan Garden</a></li>
+            <li><a [routerLink]="['/Pick']">Select Roses</a></li>
+            <li><a [routerLink]="['/Purchase']">Purchase</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="#">Plan Garden</a></li>
+            <li><a href="#">Select Roses</a></li>
+            <li><a href="#">Purchase</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
+<router-outlet></router-outlet>
+

@@ -1,0 +1,66 @@
+<div class="container">
+    <div class="row">
+        <div class="col s10 m12">
+            <h2 class="header">Select Roses</h2>
+            <div class="card-panel blue-grey-text white z-depth-5">
+                <table width="100%">
+                    <thead>
+                    <tr>
+                        <th width='20%'>Category</th>
+                        <th width='20%'>Rose</th>
+                        <th width='10%'>Price</th>
+                        <th width='10%'>Quantity</th>
+                        <th width='10%'>SubTotal</th>
+                        <th width='10%'>Rating</th>
+                        <th width='20%'>&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="#rose of model; #i=index">
+                        <td width='20%'>
+                            <select class="browser-default" id="category" [(ngModel)]="rose.category"
+                                    (change)="emptyValues(rose)">
+                                <option *ngFor="#c of roseInventory" [value]="c.name">{{c.name}}</option>
+                            </select>
+                        </td>
+                        <td width='20%'>
+                            <select class="browser-default" [(ngModel)]="rose.name" *ngIf="rose.category">
+                                <option *ngFor="#p of roseInventory[getCategoryIndex(rose)].products" [value]="p.name">
+                                    {{p.name}}
+                                </option>
+                            </select>
+                        </td>
+                        <td width='10%'>{{setRosePrice(rose) | currency: 'USD': true: '.2-2'}}</td>
+                        <td width='10%'><input class="browser-default" [(ngModel)]="rose.quantity"
+                                               (blur)="checkMaxRoses()"></td>
+                        <td width='10%'>{{calculateSubTotal(rose) | currency: 'USD': true: '.2-2'}}</td>
+                        <td width='10%'>
+                            <template ngFor [ngForOf]="getRating(rose)" #index="index" *ngIf="rose.name">
+                                <span>
+                                    <i class="tiny material-icons deep-orange-text">star</i>
+                                </span>
+                            </template>
+                        </td>
+                        <td width='20%'>
+                            <button class="waves-effect waves-light btn" (click)="removeRoseBush(rose)">Remove</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button class="waves-effect waves-light btn" (click)="addRoseBush()" [disabled]="!checkMaxRoses()">Add
+                    Rose Bush
+                </button>
+                <div *ngIf="!checkMaxRoses()" class="red-text">You've selected too many plants! Please remove some
+                    or increase the size of your garden (currently {{getMaxRoses()}} plants).
+                </div>
+                <div class="row valign-wrapper">
+                    <div class="valign right-align col s12">
+                        <button [routerLink]="['/Purchase']" [disabled]="!checkMaxRoses()" class="waves-effect waves-light btn">Purchase Roses<i
+                            class="material-icons right">send</i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

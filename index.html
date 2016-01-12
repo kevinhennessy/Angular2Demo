@@ -1,12 +1,40 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Angular2 playground</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Rose Garden Planner</title>
+    <!-- CSS  -->
+    <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <base href="/">
 </head>
 
 <body>
-    <hello-app>Loading...</hello-app>
+    <main>
+        <planner-app>Loading...</planner-app>
+    </main>
+    <footer class="page-footer materialize-red-text text-lighten-2">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Kevin Hennessy</h5>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">AIS</h5>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Tech Talk</h5>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 <!-- ES6-related imports -->
@@ -18,10 +46,12 @@
     System.config({defaultJSExtensions: true});
 </script>
 <script src="/node_modules/rxjs/bundles/Rx.js"></script>
-<script src="/node_modules/angular2/bundles/angular2.min.js"></script>
+<!--<script src="/node_modules/angular2/bundles/angular2.min.js"></script>-->
+<script src="https://code.angularjs.org/2.0.0-beta.0/angular2.min.js"></script>
+<script src="/node_modules/angular2/bundles/router.dev.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
 <script>
     //bootstrap the Angular2 application
-    System.import('dist/hello').catch(console.log.bind(console));
+    System.import('dist/bootstrap').catch(console.log.bind(console));
 </script>
-
 </html>
